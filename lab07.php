@@ -22,86 +22,32 @@
 	<h1>Unit Converter</h1>
 <?php
 
-	if ((isset($_POST['original_unit'])) && (isset($_POST['value'])) && (isset($_POST['target_unit'])))
+	if ( (isset($_POST['gender'])) && (isset($_POST['FLname'])) && (isset($_POST['address'])) && (isset($_POST['age'])) && (isset($_POST['shirt'])) )
       	{
-		$original_unit = filter_var( $_POST['original_unit'], FILTER_SANITIZE_STRING);
-		$value = filter_var( $_POST['value'], FILTER_SANITIZE_STRING);
-		$target_unit = filter_var( $_POST['target_unit'], FILTER_SANITIZE_STRING);
-
-		echo "<p>The original value is " . $value . " " . $original_unit . "</p>" ;
+		$gender = filter_var( $_POST['gender'], FILTER_SANITIZE_STRING);
+		$FLname = filter_var( $_POST['FLname'], FILTER_SANITIZE_STRING);
+		$address = filter_var( $_POST['address'], FILTER_SANITIZE_STRING);
+		$age = filter_var( $_POST['age'], FILTER_SANITIZE_STRING);
+		$shirt = filter_var( $_POST['shirt'], FILTER_SANITIZE_STRING);
+		$total = 25;
+		//echo "<p>The original value is " . $value . " " . $original_unit . "</p>" ;
 	
-		if ($original_unit == "inch") {
-			if ($target_unit == "centimeter") {
-				$target_value = $value * 2.54 ;
-			} else if ($target_unit == "meter") {
-				$target_value = $value * 2.54 / 100 ;
-			} else if ($target_unit == "kilometer") {
-				$target_value = $value * 2.54 / 1000 ;
-			}
+		if ($age >= 65) {
+			$total = $total - 5;
 		}		
 	
-		if ($original_unit == "feet") {
-			if ($target_unit == "centimeter") {
-				$target_value = $value * 30.48 ;
-			} else if ($target_unit == "meter") {
-				$target_value = $value * 30.48 / 100 ;
-			} else if ($target_unit == "kilometer") {
-				$target_value = $value * 30.48 / 1000 ;
-			}
+		if ($shirt == "XXL" || $shirt == "XXXL") {
+			$total = $total + 2;
 		}		
 	
-		if ($original_unit == "mile") {
-			if ($target_unit == "centimeter") {
-				$target_value = $value * 160934 ;
-			} else if ($target_unit == "meter") {
-				$target_value = $value * 1609.34  ;
-			} else if ($target_unit == "kilometer") {
-				$target_value = $value * 1.60934 ;
-			}
-		}
-                if ($original_unit == "ounces") {
-                        if ($target_unit == "grams") {
-                                $target_value = $value * 28.34 ;
-                        } else if ($target_unit == "kilograms") {
-                                $target_value = $value * 0.02834  ;
-                        } 
-                }
-                if ($original_unit == "pound") {
-                        if ($target_unit == "grams") {
-                                $target_value = $value * 28.34 ;
-                        } else if ($target_unit == "kilograms") {
-                                $target_value = $value * 0.02834 ;
-                        }
-                }
-                if ($original_unit == "fluid ounces") {
-                        if ($target_unit == "liters") {
-                                $target_value = $value * 0.02957 ;
-                        } 
-                }
-                if ($original_unit == "pint") {
-                        if ($target_unit == "liters") {
-                                $target_value = $value * 0.4731 ;
-                        } 
-                }
-                if ($original_unit == "quart") {
-                        if ($target_unit == "liters") {
-                                $target_value = $value * 0.9463 ;
-                        }
-                }
-                if ($original_unit == "gallon") {
-                        if ($target_unit == "liters") {
-                                $target_value = $value * 3.785 ;
-                        } 
-                }
-				
-		
-		echo "<p style='color: darkblue ;'>The target value is " . $target_value . " " . $target_unit . "</p>" ;
+		echo "<p style='color: darkblue ;'>The cost of registration is $" . $total . "</p><br><br>" ;
+		echo "<p style ='color: darkblue ;'>Your registered name is " . $FLname . "</p><br><br>" ;
+		echo "<p style ='color: darkblue ;'>Your shirt size is " . $shirt . "</p><br><br>" ;
 	}
 	else
 	{
-      		print "<p>Missing or invalid parameters. Please go back to the lab.html page to
-      		enter valid information.<br />";
-      		print "<a href='UnitConvertion.html'>Unit Converter Page</a>";
+      		print "<p>Missing or invalid parameters. Please go back to the race.html page to enter valid information.<br />";
+      		print "<a href='race.html'>Unit Converter Page</a>";
 	}
 ?>
 	</body>
